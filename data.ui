@@ -1,0 +1,50 @@
+<ui version="4.0" >
+ <class>DataViewer</class>
+ <widget class="QMainWindow" name="DataViewer" >
+  <property name="windowModality" >
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>913</width>
+    <height>861</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Data Output</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="icons.qrc" >:/images/imagine.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QVBoxLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QTreeWidget" name="dataTree" />
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>913</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar" />
+ </widget>
+ <resources>
+  <include location="icons.qrc" />
+ </resources>
+ <connections/>
+</ui>
