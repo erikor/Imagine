@@ -2,6 +2,7 @@ TEMPLATE = lib
 LIBS = -lm
 TARGET = ./plugins/basicAnalysis
 CONFIG += plugin dll release
+INCLUDEPATH += ./include
 
 macx {
   CONFIG += x86_64
@@ -18,10 +19,15 @@ win32 {
 
 HEADERS += \
     include/doubleslider.h \
-    include/basictoolsplugin.h
+    include/basictoolsplugin.h \
+    include/interfaces.h \
+    include/analysisplugins.h \
+    include/matrix.h
 
 SOURCES += \
-    src/basictoolsplugin.cpp
+    src/basictoolsplugin.cpp \
+    src/matrix.cpp \
+    src/doubleslider.cpp
 
 FORMS += \
     ui/sizenp.ui \

@@ -1,7 +1,5 @@
-#include "../Imagine/interfaces.h"
-#include "../Imagine/matrix.h"
-#include "../doubleSlider/doubleslider.h"
-
+#include "interfaces.h"
+#include "matrix.h"
 #include "ui_size.h"
 #include "ui_sizenp.h"
 #include <QObject>

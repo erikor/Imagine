@@ -2,4 +2,6 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     Application \
-    Plugins
+    SegmentationPlugins \
+    AnalysisPlugins
+

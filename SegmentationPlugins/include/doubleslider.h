@@ -12,22 +12,22 @@ Q_OBJECT
 public:
   DoubleSlider(QWidget *parent = 0);
   QVector<int> value();
-
+  
 public slots:
    void setValue(int, int);
-
+   
 signals:
   void valueChanged();
   void minValueChanged(int);
-  void minValueChangedString(QString);
+  void minValueChangedString(QString);  
   void maxValueChanged(int);
-  void maxValueChangedString(QString);
+  void maxValueChangedString(QString);  
 
 protected:
   void paintEvent(QPaintEvent *event);
   void mousePressEvent(QMouseEvent*);
-  void mouseMoveEvent(QMouseEvent*);
-  void mouseReleaseEvent(QMouseEvent*);
+  void mouseMoveEvent(QMouseEvent*);  
+  void mouseReleaseEvent(QMouseEvent*);  
   int min;
   int max;
   int v1;

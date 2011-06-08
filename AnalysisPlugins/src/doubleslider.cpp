@@ -34,7 +34,7 @@ void DoubleSlider::setValue(int a, int b) {
 void DoubleSlider::mousePressEvent(QMouseEvent* e)
 {
   int x = (maximum()-minimum()) * e->x() / width();
-  if(abs(v1-x) < abs(v2-x)) {
+  if(abs(v1-x) < abs(v2-x)) { 
      v1 = x;
   } else {
      v2 = x;
@@ -45,7 +45,7 @@ void DoubleSlider::mousePressEvent(QMouseEvent* e)
 void DoubleSlider::mouseMoveEvent(QMouseEvent* e)
 {
   int x = (maximum()-minimum()) * e->x() / width();
-  if(abs(v1-x) < abs(v2-x)) {
+  if(abs(v1-x) < abs(v2-x)) { 
      v1 = x;
   } else {
      v2 = x;

@@ -1,10 +1,9 @@
 TEMPLATE = app
 
-SOURCES = mainwindow.cpp \
+SOURCES = \
     src/matrix.cpp \
     src/mainwindow.cpp \
     src/main.cpp \
-    src/iview.cpp \
     src/interfaces.cpp \
     src/imgview.cpp \
     src/imgmodel.cpp \
@@ -15,7 +14,7 @@ SOURCES = mainwindow.cpp \
     src/dataviewer.cpp \
     src/analysisplugins.cpp
 
-HEADERS = mainwindow.h \
+HEADERS = \
     include/tiffvers.h \
     include/tiffiop.h \
     include/tiffio.h \
@@ -23,7 +22,6 @@ HEADERS = mainwindow.h \
     include/tiff.h \
     include/matrix.h \
     include/mainwindow.h \
-    include/iview.h \
     include/interfaces.h \
     include/imgview.h \
     include/imgmodel.h \
@@ -40,11 +38,10 @@ FORMS += \
     ui/dataViewer.ui \
     ui/data.ui
 
+INCLUDEPATH += ./include
 LIBS += -L/opt/local/lib -ltiff
-RESOURCES = icons.qrc \
-    ui/icons.qrc
-
-RC_FILE = application.rc
+RESOURCES = \
+    icons.qrc
 
 CONFIG += plugin \
  resources \
@@ -63,4 +60,3 @@ win32 {
     LIBS +=  -lshell32
     CONFIG += windows
 }
-
