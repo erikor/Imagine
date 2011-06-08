@@ -24,4 +24,3 @@ void dataViewer::addData(QString data) {
     ui.dataTree->setItemWidget(item, 2, sb);
     currentItem->addChild(item);  
 }
-
