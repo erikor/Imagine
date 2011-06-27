@@ -1,6 +1,6 @@
 TEMPLATE = lib
 LIBS = -lm
-TARGET = ./plugins/basicAnalysis
+TARGET = ../../Imagine-build-desktop/Application/plugins/basicAnalysisPlugin
 CONFIG += plugin dll release
 INCLUDEPATH += ./include
 

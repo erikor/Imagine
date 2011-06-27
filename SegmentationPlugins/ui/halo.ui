@@ -1,137 +1,97 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Halo</class>
- <widget class="QDialog" name="Halo" >
-  <property name="geometry" >
+ <widget class="QDialog" name="Halo">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>300</height>
+    <width>450</width>
+    <height>400</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
-    <width>350</width>
-    <height>300</height>
+    <width>450</width>
+    <height>400</height>
    </size>
   </property>
-  <property name="maximumSize" >
+  <property name="maximumSize">
    <size>
-    <width>350</width>
-    <height>300</height>
+    <width>450</width>
+    <height>400</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Band pass filter settings</string>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
+  <layout class="QVBoxLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox" >
-     <property name="title" >
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
       <string>Threshold</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
+     <layout class="QVBoxLayout">
       <item>
-       <widget class="QLabel" name="label" >
-        <property name="text" >
+       <widget class="QLabel" name="label">
+        <property name="text">
          <string>Set upper and lower pixel intensity limits:</string>
         </property>
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QLabel" name="min" >
-          <property name="minimumSize" >
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
+         <widget class="DoubleSlider" name="thresholdSlider">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="text" >
-           <string>0</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="DoubleSlider" name="thresholdSlider" >
-          <property name="minimumSize" >
+          <property name="minimumSize">
            <size>
             <width>250</width>
-            <height>25</height>
+            <height>50</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>25</height>
+            <height>50</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Double Slider</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Allows setting min and max values on 1 slider</string>
           </property>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="max" >
-          <property name="text" >
-           <string>255</string>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QCheckBox" name="autoLow" >
-          <property name="layoutDirection" >
+         <widget class="QCheckBox" name="autoLow">
+          <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Auto Low Pass</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="autoHigh" >
-          <property name="layoutDirection" >
+         <widget class="QCheckBox" name="autoHigh">
+          <property name="layoutDirection">
            <enum>Qt::RightToLeft</enum>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Auto High Pass</string>
           </property>
          </widget>
@@ -142,77 +102,48 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox_2" >
-     <property name="title" >
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
       <string>Halo size</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
+     <layout class="QVBoxLayout">
       <item>
-       <widget class="QLabel" name="label_2" >
-        <property name="text" >
+       <widget class="QLabel" name="label_2">
+        <property name="text">
          <string>Set halo offset and width (pixels)</string>
         </property>
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QLabel" name="min_2" >
-          <property name="minimumSize" >
-           <size>
-            <width>30</width>
-            <height>0</height>
-           </size>
+         <widget class="DoubleSlider" name="haloSlider">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="text" >
-           <string>0</string>
-          </property>
-          <property name="alignment" >
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="DoubleSlider" name="haloSlider" >
-          <property name="minimumSize" >
+          <property name="minimumSize">
            <size>
             <width>250</width>
-            <height>25</height>
+            <height>50</height>
            </size>
           </property>
-          <property name="maximumSize" >
+          <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>25</height>
+            <height>50</height>
            </size>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Double Slider</string>
           </property>
-          <property name="whatsThis" >
+          <property name="whatsThis">
            <string>Allows setting min and max values on 1 slider</string>
           </property>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="max_2" >
-          <property name="text" >
-           <string>100</string>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -222,12 +153,12 @@
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox" >
-     <property name="orientation" >
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="standardButtons" >
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
@@ -248,11 +179,11 @@
    <receiver>Halo</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>248</x>
      <y>254</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>157</x>
      <y>274</y>
     </hint>
@@ -264,11 +195,11 @@
    <receiver>Halo</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>316</x>
      <y>260</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
     </hint>

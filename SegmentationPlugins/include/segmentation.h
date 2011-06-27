@@ -1,5 +1,5 @@
-#include "../Imagine/interfaces.h"
-#include "../Imagine/matrix.h"
+#include "interfaces.h"
+#include "matrix.h"
 #include <QMessageBox>
 #include <QList>
 #include <QImage>
@@ -15,7 +15,7 @@ class rangeDialog : public QDialog
 Q_OBJECT
 
 public:
-    rangeDialog::rangeDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
+    rangeDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
     QVector<int> getRange();
     void setAutoTh(int);
 
@@ -33,7 +33,7 @@ class haloDialog : public QDialog
 Q_OBJECT
 
 public:
-    haloDialog::haloDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
+    haloDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
     QVector<int> getIntRange();
     QVector<int> getOffRange();
     void setAutoTh(int);

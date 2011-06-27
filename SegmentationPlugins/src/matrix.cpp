@@ -71,7 +71,7 @@ int QIntMatrix::in(int v)
 
 QRect QIntMatrix::replace(int v, int r)
 { 
-  int x, y, c = 0;
+  int x, y;
   int x1=width, x2=0, y1=height, y2=0;
   for(y = 0; y < height; y++) {
     for(x = 0; x < width; x++) {

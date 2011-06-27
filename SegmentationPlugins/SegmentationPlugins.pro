@@ -1,6 +1,6 @@
 TEMPLATE = lib
 LIBS = -lm
-TARGET = ./plugins/basicAnalysis
+TARGET = ../../Imagine-build-desktop/Application/plugins/basicSegmentation
 CONFIG += plugin dll release
 INCLUDEPATH += ./include
 
@@ -31,3 +31,6 @@ HEADERS += \
     include/matrix.h \
     include/interfaces.h \
     include/doubleslider.h
+
+RESOURCES += \
+    images.qrc

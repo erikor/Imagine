@@ -68,7 +68,6 @@ QBitmap basicSegmentation::segmentImage(const QString &method){
    	}
     upper = haloSettings->getIntRange()[1];
     lower = haloSettings->getIntRange()[0];
-    int offset = haloSettings->getOffRange()[0];
     int width = haloSettings->getOffRange()[1];
     QBitmap bm = segmentByThreshold(im, upper, lower);
   	QBitmap dbm = nonMergeDilate(bm, width);
@@ -93,7 +92,7 @@ QBitmap basicSegmentation::segmentImage(const QString &method){
 }
 
 QBitmap basicSegmentation::segmentByThreshold(QImage* im, int upper, int lower, int ch) {
-  int x, y, pRgb, p;
+  int x, y, pRgb, p=0;
   int channel;
   if (ch < 0) {
   	channel = currentChannel;
@@ -126,7 +125,6 @@ QBitmap basicSegmentation::nonMergeDilate(QBitmap mm, int count) {
   QIntMatrix mx(mm.width(), mm.height());
   QVector<int> values;
   QIntMatrix source = find(mm, 50);
-  int uv = source.uniqueCount();
   
   for(n=0; n < count; n++) {  	
     for(x=0; x < mm.width(); x++) {
@@ -318,7 +316,7 @@ QBitmap basicSegmentation::xand(QBitmap am, QBitmap bm) {
 
 
 void basicSegmentation::setOptions(const QString &opt, QWidget* parent) {
-	return;
+        return;
 }
 
 int basicSegmentation::autoThreshold(QImage* im, int ch) {
@@ -375,7 +373,7 @@ rangeDialog::rangeDialog( QWidget *parent, Qt::WindowFlags f)
   int mni = settings->value("plugins/basicseg/minint", 0).toInt();
 
   ui.thresholdSlider->setRange(0,255);
-  ui.thresholdSlider->setValue(mni,mxi);
+  ui.thresholdSlider->setSpan(mni,mxi);
   QObject::connect(ui.thresholdSlider, SIGNAL(minValueChangedString(QString)), ui.min, SLOT(setText(QString)));
   QObject::connect(ui.thresholdSlider, SIGNAL(maxValueChangedString(QString)), ui.max, SLOT(setText(QString)));
   QObject::connect(ui.autoHigh, SIGNAL(toggled(bool)), this, SLOT(autoToggle()));
@@ -392,17 +390,17 @@ void rangeDialog::setAutoTh(int i) {
 void rangeDialog::autoToggle() {
 	if (sender()->objectName() == "autoHigh" && ui.autoHigh->isChecked()) {
 		ui.autoLow->setChecked(false);
-		ui.thresholdSlider->setValue(autoTh, 255);
+                ui.thresholdSlider->setSpan(autoTh, 255);
 		ui.min->setText(QString("%1").arg(autoTh));
 		ui.max->setText(QString("%1").arg(255));
-		ui.thresholdSlider->setValue(autoTh, 255);
+                ui.thresholdSlider->setSpan(autoTh, 255);
 		ui.thresholdSlider->setEnabled(false);
 	} else if (ui.autoLow->isChecked()) {
 		ui.autoHigh->setChecked(false);
-		ui.thresholdSlider->setValue(0, autoTh);
+                ui.thresholdSlider->setSpan(0, autoTh);
 		ui.min->setText(QString("%1").arg(0));
 		ui.max->setText(QString("%1").arg(autoTh));
-		ui.thresholdSlider->setValue(0, autoTh);
+                ui.thresholdSlider->setSpan(0, autoTh);
 		ui.thresholdSlider->setEnabled(false);
 	} else {
 		ui.thresholdSlider->setEnabled(true);
@@ -411,9 +409,9 @@ void rangeDialog::autoToggle() {
 
 QVector<int> rangeDialog::getRange()
 {
-    settings->setValue("plugins/basicseg/maxint", ui.thresholdSlider->value()[1]);
-    settings->setValue("plugins/basicseg/minint", ui.thresholdSlider->value()[0]);
-	return(ui.thresholdSlider->value());
+    settings->setValue("plugins/basicseg/maxint", ui.thresholdSlider->getValues()[1]);
+    settings->setValue("plugins/basicseg/minint", ui.thresholdSlider->getValues()[0]);
+        return(ui.thresholdSlider->getValues());
 }
 
 haloDialog::haloDialog( QWidget *parent, Qt::WindowFlags f) 
@@ -422,14 +420,10 @@ haloDialog::haloDialog( QWidget *parent, Qt::WindowFlags f)
   ui.setupUi(this);
   autoTh = 125;
   ui.thresholdSlider->setRange(0,255);
-  ui.thresholdSlider->setValue(0,255);
-  QObject::connect(ui.thresholdSlider, SIGNAL(minValueChangedString(QString)), ui.min, SLOT(setText(QString)));
-  QObject::connect(ui.thresholdSlider, SIGNAL(maxValueChangedString(QString)), ui.max, SLOT(setText(QString)));
+  ui.thresholdSlider->setSpan(0,255);
   QObject::connect(ui.autoHigh, SIGNAL(toggled(bool)), this, SLOT(autoToggle()));
   QObject::connect(ui.autoLow, SIGNAL(toggled(bool)), this, SLOT(autoToggle()));
-  QObject::connect(ui.haloSlider, SIGNAL(minValueChangedString(QString)), ui.min_2, SLOT(setText(QString)));
-  QObject::connect(ui.haloSlider, SIGNAL(maxValueChangedString(QString)), ui.max_2, SLOT(setText(QString)));
-}
+  }
 
 void haloDialog::setAutoTh(int i) {
 	autoTh = i;
@@ -438,17 +432,13 @@ void haloDialog::setAutoTh(int i) {
 void haloDialog::autoToggle() {
 	if (sender()->objectName() == "autoHigh" && ui.autoHigh->isChecked()) {
 		ui.autoLow->setChecked(false);
-		ui.thresholdSlider->setValue(autoTh, 255);
-		ui.min->setText(QString("%1").arg(autoTh));
-		ui.max->setText(QString("%1").arg(255));
-		ui.thresholdSlider->setValue(autoTh, 255);
+                ui.thresholdSlider->setSpan(autoTh, 255);
+                ui.thresholdSlider->setSpan(autoTh, 255);
 		ui.thresholdSlider->setEnabled(false);
 	} else if (ui.autoLow->isChecked()) {
 		ui.autoHigh->setChecked(false);
-		ui.thresholdSlider->setValue(0, autoTh);
-		ui.min->setText(QString("%1").arg(0));
-		ui.max->setText(QString("%1").arg(autoTh));
-		ui.thresholdSlider->setValue(0, autoTh);
+                ui.thresholdSlider->setSpan(0, autoTh);
+                ui.thresholdSlider->setSpan(0, autoTh);
 		ui.thresholdSlider->setEnabled(false);
 	} else {
 		ui.thresholdSlider->setEnabled(true);
@@ -457,17 +447,17 @@ void haloDialog::autoToggle() {
 
 QVector<int> haloDialog::getIntRange()
 {
-	return(ui.thresholdSlider->value());
+        return(ui.thresholdSlider->getValues());
 }
  
 QVector<int> haloDialog::getOffRange()
 {
-	return(ui.haloSlider->value());
+        return(ui.haloSlider->getValues());
 }
  
 QIntMatrix basicSegmentation::find(QBitmap mask, int minsize)
 {
-  int y, x, a, l, t, i, eqI, eqTI, eqV, w, h, eqMaxI=1, newID = 2;      
+  int y, x, a, l, t, eqI, eqTI, eqV, w, h, eqMaxI=1, newID = 2;
   bool done;
   QIntMatrix r(mask.width(), mask.height());
   QImage im = mask.toImage();

@@ -49,7 +49,7 @@ Results basicAnalysis::analyzeImage(const QString &method)
     settings->setValue("plugins/basic/maxsize", upper);
 
     r.data = ""; 
-    int i;
+    int i = 0;
 
     QIntMatrix result = find(*mask, *roi, lower, upper);    
  	QVector<int> uv;
@@ -114,7 +114,6 @@ Results basicAnalysis::analyzeImage(const QString &method)
 
   } else if(method == "Average Intensity") {
     r.data = ""; 
-    int i;
     QImage* im = images.at(currentIndex);
     int n=0;
     int ti=0;
@@ -147,7 +146,7 @@ Results basicAnalysis::analyzeImage(const QString &method)
 	    r.data.append(QString("<p>Average intensity: NA, Positive Pixel Count: 0, Roi Area: %3").arg(a));
  	}
   } else if(method == "Average IHC Intensity") {
-  	int x, y, i, p=0, ti, n=0, th;
+        int x, y, p=0, n=0;
     r.data = ""; 
     QImage m = roi->toImage();
     QImage* im = images.at(currentIndex);
@@ -246,7 +245,6 @@ Results basicAnalysis::analyzeImage(const QString &method)
 
     QBitmap m = xand(*roi, *mask);
     QImage *im = images.at(currentIndex);
-   	int ath = autoThreshold(im, 1);
 	QBitmap cyt = segmentByThreshold(im, intUpper, intLower, ch);
   	QIntMatrix result = find(cyt, m, szLower, szUpper);    
 
@@ -577,7 +575,7 @@ progressWindow::progressWindow( QWidget *parent, Qt::WindowFlags f)
 }
 
 QBitmap basicAnalysis::segmentByThreshold(QImage* im, int upper, int lower, int ch) {
-  int x, y, pRgb, p;
+  int x, y, pRgb, p=0;
   int channel;
   if (ch < 0) {
   	channel = currentChannel;
@@ -609,7 +607,7 @@ QBitmap basicAnalysis::segmentByThreshold(QImage* im, int upper, int lower, int 
 
 QIntMatrix basicAnalysis::find(QBitmap mask, int minsize, int maxsize)
 {
-  int y, x, a, l, t, i, eqI, eqTI, eqV, w, h, eqMaxI=1, newID = 2;      
+  int y, x, a, l, t, eqI, eqTI, eqV, w, h, eqMaxI=1, newID = 2;
   bool done;
   QIntMatrix r(mask.width(), mask.height());
   QImage im = mask.toImage();
@@ -878,7 +876,7 @@ QBitmap basicAnalysis::xand(QBitmap am, QBitmap bm) {
 }
 
 QBitmap sizeDialog::segmentByThreshold(QImage* im, int upper, int lower, int ch) {
-  int x, y, pRgb, p;
+  int x, y, pRgb, p=0;
   int channel = ch;
   QImage m = QImage(im->width(), im->height(), QImage::Format_Mono);
   for(x=0; x<im->width(); x++) {
