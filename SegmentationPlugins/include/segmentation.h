@@ -6,7 +6,6 @@
 #include <QBitmap>
 #include <QSettings>
 #include <QtCore/qplugin.h>
-#include "doubleslider.h"
 #include "ui_manual.h"
 #include "ui_halo.h"
 
@@ -18,9 +17,12 @@ public:
     rangeDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
     QVector<int> getRange();
     void setAutoTh(int);
+    void setSpan(int, int);
 
 public slots:
     void autoToggle();
+    void setUpperLabel(int);
+    void setLowerLabel(int);
     
 private:
     Ui::Dialog ui;
@@ -40,6 +42,10 @@ public:
 
 public slots:
     void autoToggle();
+    void setUpperLabel(int);
+    void setLowerLabel(int);
+    void setOffsetLabel(int);
+    void setWidthLabel(int);
     
 private:
     Ui::Halo ui;

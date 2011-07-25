@@ -18,7 +18,6 @@ win32 {
 }
 
 HEADERS += \
-    include/doubleslider.h \
     include/basictoolsplugin.h \
     include/interfaces.h \
     include/analysisplugins.h \
@@ -26,8 +25,7 @@ HEADERS += \
 
 SOURCES += \
     src/basictoolsplugin.cpp \
-    src/matrix.cpp \
-    src/doubleslider.cpp
+    src/matrix.cpp
 
 FORMS += \
     ui/sizenp.ui \

@@ -19,8 +19,7 @@ win32 {
 
 SOURCES += \
     src/segmentation.cpp \
-    src/matrix.cpp \
-    src/doubleslider.cpp
+    src/matrix.cpp
 
 FORMS += \
     ui/manual.ui \
@@ -30,7 +29,6 @@ HEADERS += \
     include/segmentation.h \
     include/matrix.h \
     include/interfaces.h \
-    include/doubleslider.h
 
 RESOURCES += \
     images.qrc

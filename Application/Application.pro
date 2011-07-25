@@ -10,7 +10,6 @@ SOURCES = \
     src/imganalyzer.cpp \
     src/idataviewer.cpp \
     src/ianalysis.cpp \
-    src/doubleslider.cpp \
     src/dataviewer.cpp \
     src/analysisplugins.cpp
 
@@ -28,7 +27,6 @@ HEADERS = \
     include/imganalyzer.h \
     include/idataviewer.h \
     include/ianalysis.h \
-    include/doubleslider.h \
     include/dataviewer.h \
     include/analysisplugins.h
 

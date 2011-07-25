@@ -1,10 +1,8 @@
 #include "basictoolsplugin.h"
 
 QStringList basicAnalysis::methods(){
-//	return QStringList() << "Count Objects" << "Identify & Measure Objects" << "Identify & Measure Sub-Objects"
-
-	return QStringList() << "Count Objects" << "Identify & Measure Objects" << "ROI Area" 
-	                     << "Halo Positivity" << "Average IHC Intensity" << "Average Intensity";
+        return QStringList() << "Count Objects" << "Identify & Measure Objects" // << "Identify & Measure Sub-Objects"
+                             << "ROI Area" << "Halo Positivity" << "Average IHC Intensity" << "Average Intensity";
 }
 
 void basicAnalysis::init(QList<QImage*> imgList, QBitmap* r, QBitmap* m, int i, int c, QWidget* parent){
@@ -773,13 +771,16 @@ sizeDialog::sizeDialog( QWidget *parent, Qt::WindowFlags f)
   ui.setupUi(this);
   scene = new QGraphicsScene(0,0,512,512);
   ui.preview->setScene(scene);
-  QObject::connect(ui.thresholdSlider, SIGNAL(valueChanged()), this, SLOT(updatePreview()));
+  QObject::connect(ui.thresholdLower, SIGNAL(valueChanged(int)), this, SLOT(updatePreview()));
+  QObject::connect(ui.thresholdUpper, SIGNAL(valueChanged(int)), this, SLOT(updatePreview()));
   maskItem = NULL;
 }
 
 void sizeDialog::updatePreview() {
-  int min = ui.thresholdSlider->value()[0];
-  int max = ui.thresholdSlider->value()[1];
+  int min = ui.thresholdLower->value();
+  int max = ui.thresholdUpper->value();
+  ui.thresholdLowerLabel->setText(QString("%1").arg(min));
+  ui.thresholdUpperLabel->setText(QString("%1").arg(max));
   QBitmap bitmask = segmentByThreshold(image, max, min, 1);
   QPixmap mask = QPixmap(image->width(), image->height());
   mask.fill(Qt::red);
@@ -808,7 +809,10 @@ QVector<int> sizeDialog::getSizeRange()
 }
 
 QVector<int> sizeDialog::getIntRange() {
-	return(ui.thresholdSlider->value());
+    QVector<int> v;
+    v << ui.thresholdLower->value();
+    v << ui.thresholdUpper->value();
+    return(v);
 }
 
 int sizeDialog::getChannel()
@@ -828,9 +832,9 @@ void sizeDialog::setSizeRange(int mn, int mx) {
 }
 
 void sizeDialog::setIntRange(int mn, int mx) {
-	ui.thresholdSlider->setValue(mn, mx);
+    ui.thresholdLower->setValue(mn);
+    ui.thresholdUpper->setValue(mx);
 }
-
 
 
 sizeNpDialog::sizeNpDialog( QWidget *parent, Qt::WindowFlags f) 
