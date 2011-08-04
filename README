@@ -1,0 +1,15 @@
+INSTALLATION:
+
+A windows binary will be made available soon from the Downloads button above.
+
+BUILDING FROM SOURCE:
+
+Pre-requisites: This application needs libtiff (www.libtiff.org). Libtiff is preinstalled on Mac Os X and many unix systems.  Windows users will need to download the library (and dependencies...also available from the above link) and put them somewhere on your PATH (such as c:/windows/system32/).
+
+Then download the source and build the application for your system (windows, mac, linux, unix):
+
+1. Install the free QT development SDK (http://qt.nokia.com/downloads)
+3. Download this project either using git checkout, or just downloading the project from the Downloads button above.
+4. Open the project (Imagine.pro in the top level directory) with Qt Creator (included with the SDK above).
+5. Click build, then run!
+
