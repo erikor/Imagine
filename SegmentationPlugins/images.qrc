@@ -1,10 +1,4 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/sliderbar.png</file>
-        <file>images/sliderbargreen.png</file>
-        <file>images/sliderbarleft.png</file>
-        <file>images/sliderbarright.png</file>
-        <file>images/sliderdisplay.png</file>
-        <file>images/sliderhandle.png</file>
     </qresource>
 </RCC>
