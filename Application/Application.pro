@@ -1,3 +1,5 @@
+TARGET = imagine
+
 TEMPLATE = app
 
 SOURCES = \
@@ -37,24 +39,28 @@ FORMS += \
     ui/data.ui
 
 INCLUDEPATH += ./include
-LIBS += -L/opt/local/lib -ltiff
 RESOURCES = \
     icons.qrc
 
 CONFIG += plugin \
  resources \
- qt \
- debug
+ qt
 
 macx {
   CONFIG += x86_64
+  LIBS += -L/opt/local/lib  -ltiff
 }
 
 unix:!macx{
 }
 
 win32 {
-    INCLUDEPATH += c:/usr/include
-    LIBS +=  -lshell32
     CONFIG += windows
+    RC_FILE = imagine.rc
+    INCLUDEPATH += c:/usr/include
+    LIBS += -Lc:/usr/lib -ltiff3
+    LIBS += -lshell32
 }
+
+OTHER_FILES += \
+    imagine.rc
